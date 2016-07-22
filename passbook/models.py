@@ -6,9 +6,9 @@ except ImportError:
     import simplejson as json
 
 try:
-    from cStringIO import StringIO
+    from io import StringIO
 except ImportError:
-    from StringIO import StringIO
+    from io import StringIO
 
 import hashlib
 import zipfile
