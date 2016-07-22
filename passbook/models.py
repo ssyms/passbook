@@ -323,7 +323,7 @@ class Pass(object):
     # creates the hashes for the files and adds them into a json string.
     def _createManifest(self, pass_json):
         # Creates SHA hashes for all files in package
-        self._hashes['pass.json'] = hashlib.sha1(pass_json).hexdigest()
+        self._hashes['pass.json'] = hashlib.sha1(pass_json.encode('utf-8')).hexdigest()
         for filename, filedata in self._files.items():
             self._hashes[filename] = hashlib.sha1(filedata).hexdigest()
         return json.dumps(self._hashes)
