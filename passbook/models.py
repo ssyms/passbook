@@ -6,7 +6,7 @@ except ImportError:
     import simplejson as json
 
 try:
-    from io import StringIO
+    from cStringIO import StringIO
 except ImportError:
     from io import StringIO
 
@@ -26,11 +26,13 @@ class Alignment:
     JUSTIFIED = 'PKTextAlignmentJustified'
     NATURAL = 'PKTextAlignmentNatural'
 
+
 class BarcodeFormat:    
     PDF417 = 'PKBarcodeFormatPDF417'
     QR = 'PKBarcodeFormatQR'
     AZTEC = 'PKBarcodeFormatAztec'
     CODE128 = 'PKBarcodeFormatCode128'
+
 
 class TransitType:
     AIR = 'PKTransitTypeAir'
@@ -371,7 +373,8 @@ class Pass(object):
             'suppressStripShine': self.suppressStripShine,
             self.passInformation.jsonname: self.passInformation.json_dict()
         }
-        #barcodes have 2 fields, 'barcode' is legacy so limit it to the legacy formats, 'barcodes' supports all
+
+        # barcodes have 2 fields, 'barcode' is legacy so limit it to the legacy formats, 'barcodes' supports all
         if self.barcode:
             original_formats = [BarcodeFormat.PDF417, BarcodeFormat.QR, BarcodeFormat.AZTEC]
             legacyBarcode = self.barcode
