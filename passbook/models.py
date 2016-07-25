@@ -343,7 +343,7 @@ class Pass(object):
 
         # need to cast to string since load_key doesnt work with unicode paths
         smime.load_key(str(key), certificate, callback=passwordCallback)
-        pk7 = smime.sign(SMIME.BIO.MemoryBuffer(manifest), flags=SMIME.PKCS7_DETACHED | SMIME.PKCS7_BINARY)
+        pk7 = smime.sign(SMIME.BIO.MemoryBuffer(manifest.encode('utf-8')), flags=SMIME.PKCS7_DETACHED | SMIME.PKCS7_BINARY)
 
         pem = SMIME.BIO.MemoryBuffer()
         pk7.write(pem)
