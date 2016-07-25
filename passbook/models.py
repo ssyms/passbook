@@ -374,6 +374,7 @@ class Pass(object):
         for filename, filedata in self._files.items():
             zf.writestr(filename, filedata)
         zf.close()
+        return zf
 
     def json_dict(self):
         d = {
