@@ -356,7 +356,7 @@ class Pass(object):
         private_key.save_pub_key_bio(bio)
 
         pub_key = bio.read
-        print(pub_key)
+        pub_key = ''.join(pub_key.split('\n')[1:-2])
 
 
         # convert pem to der
