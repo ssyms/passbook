@@ -1,6 +1,10 @@
-## The following requirements were added by pip --freeze:
 M2Crypto==0.25.0
+Naked==0.1.31
+PyYAML==3.11
 path.py==8.2.1
 py==1.4.31
+pyasn1==0.1.9
 pytest==2.9.2
+requests==2.10.0
+shellescape==3.4.1
 typing==3.5.2.2

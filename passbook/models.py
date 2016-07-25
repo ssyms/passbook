@@ -1,4 +1,7 @@
 #:coding=utf8:
+import base64
+
+import M2Crypto
 
 try:
     import json
@@ -347,8 +350,17 @@ class Pass(object):
 
         pem = SMIME.BIO.MemoryBuffer()
         pk7.write(pem)
+
+        private_key = M2Crypto.RSA.load_key(key)
+        bio = M2Crypto.BIO.MemoryBuffer()
+        private_key.save_pub_key_bio(bio)
+
+        pub_key = bio.read()
+        pub_key = ''.join(pub_key.split('\n')[1:-2])
+
+
         # convert pem to der
-        der = ''.join(l.strip() for l in pem.read().split('-----')[2].splitlines()).decode('utf-8')
+        der = base64.b64decode(pub_key)
 
         return der
 
