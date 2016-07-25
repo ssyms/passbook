@@ -356,6 +356,7 @@ class Pass(object):
         private_key.save_pub_key_bio(bio)
 
         pub_key = bio.read()
+        pub_key.decode('utf-8')
         pub_key = ''.join(pub_key.split('\n')[1:-2])
 
 
