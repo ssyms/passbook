@@ -355,7 +355,8 @@ class Pass(object):
         bio = M2Crypto.BIO.MemoryBuffer()
         private_key.save_pub_key_bio(bio)
 
-        pub_key = bio.read()
+        pub_key = bio.read
+        print(pub_key)
 
 
         # convert pem to der
