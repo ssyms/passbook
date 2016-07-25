@@ -348,7 +348,7 @@ class Pass(object):
         pem = SMIME.BIO.MemoryBuffer()
         pk7.write(pem)
         # convert pem to der
-        der = ''.join(l.strip() for l in pem.read().split('-----')[2].splitlines()).decode('base64')
+        der = ''.join(l.strip() for l in pem.read().split('-----')[2].splitlines()).decode('utf-8')
 
         return der
 
